@@ -56,7 +56,7 @@ public class MyBatisPlusGenerator {
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("root");
-        dsc.setUrl("jdbc:mysql://localhost:3306/test3?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull");
+        dsc.setUrl("jdbc:mysql://localhost:3306/springboot_mybatis?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull");
         mpg.setDataSource(dsc);
 
         // 策略配置
@@ -66,7 +66,7 @@ public class MyBatisPlusGenerator {
         //移除domain中boolean类型前面的is
         strategy.setEntityBooleanColumnRemoveIsPrefix(true);
         //设置包含的表名
-            strategy.setInclude(new String[]{"user"});
+            strategy.setInclude(new String[]{"user","open_api_account_config"});
         //使用lombook方式生成set、get
         strategy.setEntityLombokModel(true);
         strategy.setNaming(NamingStrategy.underline_to_camel); //f 表名生成策略
