@@ -1,6 +1,8 @@
 package www.sh.com.util;
 
 import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
@@ -151,10 +153,49 @@ public class Md5Util {
 		}
 	}
 
+	/**
+	 * 自动生成授权账号对应的apiKey
+	 */
+	public static String generatorApiKey(String account){
+		if(StringUtils.isBlank(account)){
+			return null;
+		}
+
+		String apiKey = null;
+		String rawData = "0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,!,@,#,$,%,^,&,*,(,),_,+";
+		String[] arr = rawData.split(",");
+		int size = 16;
+		StringBuilder input = new StringBuilder(size);
+
+		try {
+			for(int i=0;i<size;i++){
+                int j = (int) Math.round(arr.length * Math.random());
+                if(j == arr.length){
+                    j = j - 1;
+                }
+                input.append(arr[j]);
+            }
+			input.append(account);
+			apiKey = Md5Util.md5LowerCase(input.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return apiKey;
+	}
+
+
 	public static void main(String[] args) {
 		System.out.println(Md5Util.md5LowerCase("dared34sdf43"));
 		System.out.println(Md5Util.md5UpperCase("dared34sdf43"));
 
+		String account = "test1";
+		System.out.println(account+"的apiKey:"+generatorApiKey(account));
+
+		String password = "123456";
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String passwordEncoder = encoder.encode(password);
+		System.out.println(passwordEncoder);
 	}
 
 }

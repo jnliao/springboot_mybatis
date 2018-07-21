@@ -28,6 +28,10 @@ public class User implements Serializable {
 	@JSONField(serializeUsing = ToStringSerializer.class)
 	private Long id;
 
+	private String account;
+
+	private String password;
+
 	private String email;
 
 	private Integer age;
@@ -35,5 +39,7 @@ public class User implements Serializable {
 	@TableField("create_time")
 	private Date createTime;
 
+	@TableField("update_time")
+	private Date updateTime;
 
 }

@@ -43,7 +43,7 @@ public class OpenApiInterceptor implements HandlerInterceptor {
         String signature = request.getHeader("signature");
 
         //时间戳过期
-        if((System.currentTimeMillis() - timeStamp) > EXPIRATION_TIME){
+        if((System.currentTimeMillis() - timeStamp) > EXPIRATION_TIME || (timeStamp - System.currentTimeMillis()) > EXPIRATION_TIME){
             String msg = "The timestamp expired!";
             requestFailure(request,response,msg);
             return false;
