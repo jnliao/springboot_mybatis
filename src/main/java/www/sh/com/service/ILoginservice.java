@@ -15,5 +15,5 @@ public interface ILoginservice {
     /**
      * 退出
      */
-    ResultForWeb logout(String account);
+    ResultForWeb logout(String accessToken);
 }

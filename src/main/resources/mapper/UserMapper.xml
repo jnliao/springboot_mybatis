@@ -3,19 +3,21 @@
 <mapper namespace="www.sh.com.mapper.UserMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="www.sh.com.domain.User">
+	<resultMap id="BaseResultMap" type="www.sh.com.pojo.domain.User">
 		<id column="id" property="id" />
 		<result column="account" property="account" />
 		<result column="password" property="password" />
+		<result column="nick_name" property="nickName" />
 		<result column="email" property="email" />
 		<result column="age" property="age" />
 		<result column="create_time" property="createTime" />
 		<result column="update_time" property="updateTime" />
+		<result column="enabled" property="enabled" />
 	</resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, account,password, email, age, create_time AS createTime, update_time AS updateTime
+        id, account, password, nick_name AS nickName, email, age, create_time AS createTime, update_time AS updateTime,enabled
     </sql>
 
 </mapper>

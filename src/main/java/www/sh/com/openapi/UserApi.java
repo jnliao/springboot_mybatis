@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import www.sh.com.domain.User;
+import www.sh.com.pojo.vo.UserVo;
 import www.sh.com.service.IUserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,13 +25,13 @@ public class UserApi {
 
     @ApiOperation(value = "根据id查询用户")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "account",value="鉴权中心分配的账号",dataType="string",paramType="header",required = true),
-            @ApiImplicitParam(name = "timestamp",value="请求时间戳",dataType="long",paramType="header",required = true),
-            @ApiImplicitParam(name = "signature",value="根据MD5加密（账号+秘钥+时间戳）求出的签名",dataType="string",paramType="header",required = true)
+            @ApiImplicitParam(name = "account",value="鉴权中心分配的账号",dataType="String",paramType="header",required = true),
+            @ApiImplicitParam(name = "timestamp",value="请求时间戳",dataType="Long",paramType="header",required = true),
+            @ApiImplicitParam(name = "signature",value="根据MD5加密（账号+秘钥+时间戳）求出的签名",dataType="String",paramType="header",required = true)
     })
     @RequestMapping(value = "/user/findById", method = RequestMethod.POST)
-    public User getCrmUsers(HttpServletRequest request,
-                            @ApiParam(name = "id",value="用户id", required = true) @RequestParam("id") Long id) {
+    public UserVo getCrmUsers(HttpServletRequest request,
+                              @ApiParam(name = "id",value="用户id", required = true) @RequestParam("id") Long id) {
         return iUserService.findById(id);
     }
 

@@ -3,7 +3,7 @@
 <mapper namespace="www.sh.com.mapper.OpenApiAccountConfigMapper">
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="www.sh.com.domain.OpenApiAccountConfig">
+	<resultMap id="BaseResultMap" type="www.sh.com.pojo.domain.OpenApiAccountConfig">
 		<id column="id" property="id" />
 		<result column="account" property="account" />
 		<result column="api_key" property="apiKey" />

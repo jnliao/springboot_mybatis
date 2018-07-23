@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import www.sh.com.Application;
-import www.sh.com.domain.User;
+import www.sh.com.pojo.vo.UserVo;
 import www.sh.com.service.IUserService;
 
 /**
@@ -21,7 +21,7 @@ public class UserServiceImplTest {
 
     @Test
     public void findById() throws Exception {
-        User user = iUserService.findById(2L);
+        UserVo userVo = iUserService.findById(2L);
         System.out.println();
 
     }

@@ -1,6 +1,6 @@
 package www.sh.com.mapper;
 
-import www.sh.com.domain.OpenApiAccountConfig;
+import www.sh.com.pojo.domain.OpenApiAccountConfig;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**

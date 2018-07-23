@@ -49,8 +49,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/v2/**","/css/**", "/js/**", "/fonts/**", "/index")
-                .excludePathPatterns("/authorize/**")
-                .excludePathPatterns("/socket.io/**")
+                .excludePathPatterns("/login/**")
                 .excludePathPatterns("/swagger-ui.html","/swagger-resources/**")
                 .excludePathPatterns("/druid/**")
                 .excludePathPatterns("/bigClass/outInterface/**");

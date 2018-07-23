@@ -1,7 +1,6 @@
 package www.sh.com.mapper;
 
-import org.springframework.stereotype.Repository;
-import www.sh.com.domain.User;
+import www.sh.com.pojo.domain.User;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**

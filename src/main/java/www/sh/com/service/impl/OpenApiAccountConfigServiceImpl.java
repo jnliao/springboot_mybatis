@@ -1,6 +1,6 @@
 package www.sh.com.service.impl;
 
-import www.sh.com.domain.OpenApiAccountConfig;
+import www.sh.com.pojo.domain.OpenApiAccountConfig;
 import www.sh.com.mapper.OpenApiAccountConfigMapper;
 import www.sh.com.service.IOpenApiAccountConfigService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

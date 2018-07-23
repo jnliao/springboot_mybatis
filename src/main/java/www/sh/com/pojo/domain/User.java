@@ -1,4 +1,4 @@
-package www.sh.com.domain;
+package www.sh.com.pojo.domain;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.alibaba.fastjson.serializer.ToStringSerializer;
@@ -32,6 +32,9 @@ public class User implements Serializable {
 
 	private String password;
 
+	@TableField("nick_name")
+	private String nickName;
+
 	private String email;
 
 	private Integer age;
@@ -41,5 +44,9 @@ public class User implements Serializable {
 
 	@TableField("update_time")
 	private Date updateTime;
+	/**
+	 * 账号是否可用(默认是可用的)
+	 */
+	private Boolean enabled;
 
 }

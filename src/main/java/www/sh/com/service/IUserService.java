@@ -1,7 +1,8 @@
 package www.sh.com.service;
 
-import www.sh.com.domain.User;
+import www.sh.com.pojo.domain.User;
 import com.baomidou.mybatisplus.service.IService;
+import www.sh.com.pojo.vo.UserVo;
 
 /**
  * <p>
@@ -13,6 +14,6 @@ import com.baomidou.mybatisplus.service.IService;
  */
 public interface IUserService extends IService<User> {
 
-    User findById(Long id);
+    UserVo findById(Long id);
 	
 }

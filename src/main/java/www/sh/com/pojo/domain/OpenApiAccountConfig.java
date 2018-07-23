@@ -1,4 +1,4 @@
-package www.sh.com.domain;
+package www.sh.com.pojo.domain;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.alibaba.fastjson.serializer.ToStringSerializer;
