@@ -1,4 +1,4 @@
-package www.sh.com.service.impl;
+package www.sh.com.mapper;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -6,24 +6,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import www.sh.com.Application;
-import www.sh.com.common.ResultForWeb;
-import www.sh.com.service.IUserService;
+import www.sh.com.pojo.domain.Permission;
+
+import java.util.List;
 
 /**
  * @author liaojinneng
- * @date 2018/7/18
+ * @date 2018/7/24
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
-public class UserServiceImplTest {
+public class PermissionMapperTest {
     @Autowired
-    private IUserService iUserService;
+    private PermissionMapper permissionMapper;
 
     @Test
-    public void findById() throws Exception {
-        ResultForWeb resultForWeb = iUserService.findById(2L);
-        System.out.println();
-
+    public void findPermissionsForUser() throws Exception {
+        String account = "aaa@163.com";
+        List<Permission> permissionList = permissionMapper.findPermissionsForUser(account);
+        System.out.println(666);
     }
 
 }

@@ -2,61 +2,56 @@ package www.sh.com.pojo.domain;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.alibaba.fastjson.serializer.ToStringSerializer;
-import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
-import java.io.Serializable;
-
-import com.baomidou.mybatisplus.annotations.Version;
-
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+import java.util.Date;
+
 /**
  * <p>
- * 
+ * 系统模块表
  * </p>
  *
  * @author liaojinneng
- * @since 2018-07-20
+ * @since 2018-07-24
  */
 @Data
 @Accessors(chain = true)
-@TableName("open_api_account_config")
-public class OpenApiAccountConfig implements Serializable {
+@TableName("module")
+public class Module implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 	@JSONField(serializeUsing = ToStringSerializer.class)
 	private Long id;
     /**
-     * 账号
+     * 模块编码
      */
-	private String account;
+	@TableField("module_code")
+	private String moduleCode;
     /**
-     * 秘钥
+     * 模块名称
      */
-	@TableField("api_key")
-	private String apiKey;
-    /**
-     * 允许访问的接口
-     */
-	@TableField("api_urls")
-	private String apiUrls;
-    /**
-     * 账号是否可用(默认是可用的)
-     */
-	private Boolean enabled;
+	@TableField("module_name")
+	private String moduleName;
     /**
      * 创建时间
      */
 	@TableField("create_time")
 	private Date createTime;
     /**
-     * 更新时间
+     * 修改时间
      */
 	@TableField("update_time")
 	private Date updateTime;
+    /**
+     * 是否删除，默认为否
+     */
+	@TableField("is_deleted")
+	private Boolean deleted;
 
 
 }

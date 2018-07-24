@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
  * <p>
- * 用户表
+ * 角色权限关系表
  * </p>
  *
  * @author liaojinneng
@@ -20,45 +20,30 @@ import java.util.Date;
  */
 @Data
 @Accessors(chain = true)
-@TableName("user")
-public class User implements Serializable {
+@TableName("role_permission_rel")
+public class RolePermissionRel implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 	@JSONField(serializeUsing = ToStringSerializer.class)
 	private Long id;
     /**
-     * 账号
+     * 角色id
      */
-	private String account;
+	@JSONField(serializeUsing = ToStringSerializer.class)
+	@TableField("role_id")
+	private Long roleId;
     /**
-     * 密码
+     * 权限id
      */
-	private String password;
+	@JSONField(serializeUsing = ToStringSerializer.class)
+	@TableField("permission_id")
+	private Long permissionId;
     /**
-     * 昵称
+     * 创建时间
      */
-	@TableField("nick_name")
-	private String nickName;
-    /**
-     * 邮箱
-     */
-	private String email;
-	/**
-	 * 创建时间
-	 */
 	@TableField("create_time")
 	private Date createTime;
-    /**
-     * 修改时间
-     */
-	@TableField("update_time")
-	private Date updateTime;
-    /**
-     * 是否删除，默认为否
-     */
-	@TableField("is_deleted")
-	private Boolean deleted;
 
 
 }

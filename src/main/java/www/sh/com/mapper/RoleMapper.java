@@ -2,16 +2,16 @@ package www.sh.com.mapper;
 
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import www.sh.com.pojo.domain.User;
+import www.sh.com.pojo.domain.Role;
 
 /**
  * <p>
-  * 用户表 Mapper 接口
+  * 角色表 Mapper 接口
  * </p>
  *
  * @author liaojinneng
  * @since 2018-07-24
  */
-public interface UserMapper extends BaseMapper<User> {
+public interface RoleMapper extends BaseMapper<Role> {
 
 }

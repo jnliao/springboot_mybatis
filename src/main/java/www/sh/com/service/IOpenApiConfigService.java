@@ -1,7 +1,7 @@
 package www.sh.com.service;
 
-import www.sh.com.pojo.domain.OpenApiAccountConfig;
 import com.baomidou.mybatisplus.service.IService;
+import www.sh.com.pojo.domain.OpenApiConfig;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.service.IService;
  * @author liaojinneng
  * @since 2018-07-20
  */
-public interface IOpenApiAccountConfigService extends IService<OpenApiAccountConfig> {
+public interface IOpenApiConfigService extends IService<OpenApiConfig> {
 	
 }

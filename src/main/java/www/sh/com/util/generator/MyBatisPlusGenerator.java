@@ -66,7 +66,7 @@ public class MyBatisPlusGenerator {
         //移除domain中boolean类型前面的is
         strategy.setEntityBooleanColumnRemoveIsPrefix(true);
         //设置包含的表名
-            strategy.setInclude(new String[]{"user","open_api_account_config"});
+            strategy.setInclude(new String[]{"open_api_config","user","role","permission","module","user_role_rel","role_permission_rel"});
         //使用lombook方式生成set、get
         strategy.setEntityLombokModel(true);
         strategy.setNaming(NamingStrategy.underline_to_camel); //f 表名生成策略
@@ -75,12 +75,12 @@ public class MyBatisPlusGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setParent(null);
-        pc.setEntity("www.sh.com.domain");
+        pc.setEntity("www.sh.com.pojo.domain");
         pc.setMapper("www.sh.com.mapper");
         pc.setXml("www.sh.com.mapper.mapping");
-        pc.setService("www.sh.com.service");       //本项目没用，生成之后删掉
-        pc.setServiceImpl("www.sh.com.service.impl");   //本项目没用，生成之后删掉
-        pc.setController("www.sh.com.web");    //本项目没用，生成之后删掉
+        pc.setService("www.sh.com.service");
+        pc.setServiceImpl("www.sh.com.service.impl");
+        pc.setController("www.sh.com.web");
         mpg.setPackageInfo(pc);
 
         // 注入自定义配置，可以在 VM 中使用 cfg.abc 设置的值

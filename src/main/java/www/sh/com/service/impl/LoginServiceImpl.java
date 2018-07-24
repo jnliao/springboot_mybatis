@@ -9,12 +9,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import www.sh.com.common.CommonConstant;
 import www.sh.com.common.ResultForWeb;
+import www.sh.com.mapper.PermissionMapper;
+import www.sh.com.pojo.domain.Permission;
 import www.sh.com.pojo.domain.User;
 import www.sh.com.pojo.vo.UserVo;
 import www.sh.com.mapper.UserMapper;
 import www.sh.com.service.ILoginservice;
 import www.sh.com.util.RedisService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,14 +31,15 @@ public class LoginServiceImpl implements ILoginservice{
 
     @Autowired
     private UserMapper userMapper;
-
     @Autowired
     private RedisService redisService;
+    @Autowired
+    private PermissionMapper permissionMapper;
 
     @Override
     public ResultForWeb login(String account, String password) {
         User condition = new User();
-        condition.setEnabled(true);
+        condition.setDeleted(false);
         condition.setAccount(account);
 
         try {
@@ -51,7 +55,14 @@ public class LoginServiceImpl implements ILoginservice{
                 UserVo userVo = new UserVo();
                 BeanUtils.copyProperties(user,userVo);
 
-                String str = JSON.toJSONString(userVo)+System.currentTimeMillis();
+                List<Permission> permissionList = permissionMapper.findPermissionsForUser(user.getAccount());
+                if(permissionList!=null && permissionList.size()>0){
+                    ArrayList<String> permissionCodes = new ArrayList<>(20);
+                    permissionList.forEach(obj->permissionCodes.add(obj.getPermissionCode()));
+                    userVo.setPermissionCodes(permissionCodes);
+                }
+
+                String str = REDIS_USER_LOGIN + JSON.toJSONString(userVo) + System.currentTimeMillis();
                 BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
                 String accessToken = encoder.encode(str);
                 String redisKey = REDIS_USER_LOGIN + accessToken;

@@ -1,21 +1,15 @@
 package www.sh.com.web.login;
 
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.session.SessionProperties;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import www.sh.com.common.ResultCodeEnum;
 import www.sh.com.common.ResultForWeb;
 import www.sh.com.service.ILoginservice;
-import www.sh.com.util.RedisService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 @RestController
 @RequestMapping("/login")
+@Api(value = "login", description = "登录、退出")
 public class LoginController {
     @Autowired
     private ILoginservice iLoginservice;

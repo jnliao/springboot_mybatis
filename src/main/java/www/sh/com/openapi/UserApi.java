@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import www.sh.com.pojo.vo.UserVo;
+import www.sh.com.common.ResultForWeb;
 import www.sh.com.service.IUserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,8 +30,8 @@ public class UserApi {
             @ApiImplicitParam(name = "signature",value="根据MD5加密（账号+秘钥+时间戳）求出的签名",dataType="String",paramType="header",required = true)
     })
     @RequestMapping(value = "/user/findById", method = RequestMethod.POST)
-    public UserVo getCrmUsers(HttpServletRequest request,
-                              @ApiParam(name = "id",value="用户id", required = true) @RequestParam("id") Long id) {
+    public ResultForWeb getCrmUsers(HttpServletRequest request,
+                                    @ApiParam(name = "id",value="用户id", required = true) @RequestParam("id") Long id) {
         return iUserService.findById(id);
     }
 

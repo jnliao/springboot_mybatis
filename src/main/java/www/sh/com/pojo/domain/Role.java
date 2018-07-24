@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
  * <p>
- * 用户表
+ * 角色表
  * </p>
  *
  * @author liaojinneng
@@ -20,33 +20,26 @@ import java.util.Date;
  */
 @Data
 @Accessors(chain = true)
-@TableName("user")
-public class User implements Serializable {
+@TableName("role")
+public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 	@JSONField(serializeUsing = ToStringSerializer.class)
 	private Long id;
     /**
-     * 账号
+     * 角色编码
      */
-	private String account;
+	@TableField("role_code")
+	private String roleCode;
     /**
-     * 密码
+     * 角色名称
      */
-	private String password;
+	@TableField("role_name")
+	private String roleName;
     /**
-     * 昵称
+     * 创建时间
      */
-	@TableField("nick_name")
-	private String nickName;
-    /**
-     * 邮箱
-     */
-	private String email;
-	/**
-	 * 创建时间
-	 */
 	@TableField("create_time")
 	private Date createTime;
     /**

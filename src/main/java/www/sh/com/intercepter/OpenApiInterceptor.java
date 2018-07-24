@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import www.sh.com.pojo.domain.OpenApiAccountConfig;
-import www.sh.com.mapper.OpenApiAccountConfigMapper;
+import www.sh.com.mapper.OpenApiConfigMapper;
+import www.sh.com.pojo.domain.OpenApiConfig;
 import www.sh.com.util.Md5Util;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +30,7 @@ public class OpenApiInterceptor implements HandlerInterceptor {
     private static final Integer EXPIRATION_TIME = 5 * 60 * 1000;
 
     @Autowired
-    private OpenApiAccountConfigMapper openapiAccountConfigMapper;
+    private OpenApiConfigMapper openApiConfigMapper;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -46,11 +46,11 @@ public class OpenApiInterceptor implements HandlerInterceptor {
             return false;
         }
 
-        OpenApiAccountConfig condition = new OpenApiAccountConfig();
+        OpenApiConfig condition = new OpenApiConfig();
         condition.setAccount(account);
-        condition.setEnabled(true);
-        EntityWrapper<OpenApiAccountConfig> entityWrapper = new EntityWrapper<>(condition);
-        List<OpenApiAccountConfig> openApiAccountConfigs = openapiAccountConfigMapper.selectList(entityWrapper);
+        condition.setDeleted(false);
+        EntityWrapper<OpenApiConfig> entityWrapper = new EntityWrapper<>(condition);
+        List<OpenApiConfig> openApiAccountConfigs = openApiConfigMapper.selectList(entityWrapper);
 
         //账号不存在
         if(openApiAccountConfigs==null || openApiAccountConfigs.size()<=0){
@@ -59,7 +59,7 @@ public class OpenApiInterceptor implements HandlerInterceptor {
             return false;
         }
 
-        OpenApiAccountConfig openapiAccountConfig = openApiAccountConfigs.get(0);
+        OpenApiConfig openapiAccountConfig = openApiAccountConfigs.get(0);
         String apiKey = openapiAccountConfig.getApiKey();
         String param = account+apiKey+timeStamp;
         String md5Sign = Md5Util.md5LowerCase(param);

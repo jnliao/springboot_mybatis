@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
  * <p>
- * 用户表
+ * 对外接口权限配置表
  * </p>
  *
  * @author liaojinneng
@@ -20,8 +20,8 @@ import java.util.Date;
  */
 @Data
 @Accessors(chain = true)
-@TableName("user")
-public class User implements Serializable {
+@TableName("open_api_config")
+public class OpenApiConfig implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,25 +32,22 @@ public class User implements Serializable {
      */
 	private String account;
     /**
-     * 密码
+     * 秘钥
      */
-	private String password;
+	@TableField("api_key")
+	private String apiKey;
     /**
-     * 昵称
+     * 允许访问的接口
      */
-	@TableField("nick_name")
-	private String nickName;
+	@TableField("api_urls")
+	private String apiUrls;
     /**
-     * 邮箱
+     * 创建时间
      */
-	private String email;
-	/**
-	 * 创建时间
-	 */
 	@TableField("create_time")
 	private Date createTime;
     /**
-     * 修改时间
+     * 更新时间
      */
 	@TableField("update_time")
 	private Date updateTime;
