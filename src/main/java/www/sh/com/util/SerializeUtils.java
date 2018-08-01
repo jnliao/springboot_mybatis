@@ -5,6 +5,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/**
+ * @author Administrator
+ */
 public class SerializeUtils {
 
     /**
@@ -48,7 +51,7 @@ public class SerializeUtils {
 
     /**
      * 反序列化 
-     * @param string
+     * @param message
      * @return object
      */
     public static Object unSerialize2(String message) {
